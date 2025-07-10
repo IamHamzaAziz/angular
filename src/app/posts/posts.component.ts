@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post.type';
 import { PostsService } from '../services/posts.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-posts',  // element name with which we can use this component in html i.e <app-posts />
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './posts.component.html'
 })
 export class PostsComponent {
@@ -14,6 +15,8 @@ export class PostsComponent {
 
   // posts = signal<Array<Post>>([]) // here type is array of Post which we already defined in post.type.ts
   posts = signal<Post[]>([])  // this is same as above
+  loading = signal<boolean>(true)  // loading state
+  
   postsService = inject(PostsService)
 
   // ngOnInit is called when component is initialized
@@ -31,6 +34,7 @@ export class PostsComponent {
     // with service
     this.postsService.getPosts().subscribe((res) => {
       this.posts.set(res)
+      this.loading.set(false)  // Set loading to false when data is received
     })
   }
 }
