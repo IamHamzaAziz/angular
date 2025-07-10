@@ -1,0 +1,8 @@
+<h1 class="text-center text-2xl font-bold my-2">Posts</h1>
+
+@for (post of posts(); track post.id) {
+    <div class="border border-gray-300 rounded p-2 my-2">
+        <h2 class="text-xl font-bold">{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+    </div>
+}

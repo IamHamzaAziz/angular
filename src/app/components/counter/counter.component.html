@@ -1,0 +1,10 @@
+<p>Counter: {{ counter() }}</p>
+
+<!-- p tag will only be rendered if message() is not empty -->
+<p class="text-red-500" *ngIf="message">{{ message }}</p>
+
+<div class="gap-2 flex">
+    <button (click)="updateValue('increment')" class="border border-gray-300 rounded p-2 my-2 bg-blue-100">Increment</button>
+    <button (click)="updateValue('decrement')" class="border border-gray-300 rounded p-2 my-2 bg-red-100">Decrement</button>
+    <button (click)="updateValue('reset')" class="border border-gray-300 rounded p-2 my-2 bg-green-100">Reset</button>
+</div>

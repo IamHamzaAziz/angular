@@ -1,0 +1,11 @@
+<h1 class="text-center text-2xl font-bold my-2">Notes</h1>
+
+<!-- @for (note of notes(); track note.id) { -->
+<!--     <p>{{ note.title }}</p> -->
+<!-- } -->
+
+<ul>
+    <li *ngFor="let note of notes()" class="border border-gray-300 rounded p-2 my-2">
+        {{ note.title }}
+    </li>
+</ul>

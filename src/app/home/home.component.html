@@ -1,0 +1,13 @@
+<h1 class="text-center text-2xl font-bold">Home Page</h1>
+
+<!-- <app-greeting message="Hard Coded Message" /> -->
+<!-- <app-greeting [message]="'Ali'" /> -->
+
+<h2 class="text-xl font-bold my-2">Passing Data to Child Component & Event Binding</h2>
+<app-greeting [message]="message()" />
+
+<!-- <input type="text" (keyup)="updateMessage()"> -->
+<input type="text" (keyup)="updateMessage($event)" class="border border-gray-300 rounded p-2 my-2 focus:outline-none" placeholder="Type Something">
+
+<h2 class="text-xl font-bold my-2">Counter</h2>
+<app-counter />
