@@ -44,7 +44,6 @@ export class FormComponent {
     this.postsService.createPost(post).subscribe({
       next: (res: Post) => {
         this.message = 'Post created successfully';
-        console.log(this.message);
         this.messageClass = 'text-green-500';
         console.log('Post created:', res);
         this.isSubmitting = false;
