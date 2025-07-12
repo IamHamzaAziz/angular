@@ -30,7 +30,7 @@
     />
   </div>
 
-  <div *ngIf="hasError" class="text-red-500">{{ errorMessage }}</div>
+  <div *ngIf="message" [class]="messageClass">{{ message }}</div>
 
   <button
     type="submit"

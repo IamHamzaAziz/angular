@@ -16,8 +16,8 @@ export class FormComponent {
   form: FormGroup;
   isSubmitting = false;
   buttonText = 'Submit';
-  hasError = false;
-  errorMessage = '';
+  message = '';
+  messageClass = '';
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -28,9 +28,12 @@ export class FormComponent {
   }
 
   onSubmit(): void {
+    this.message = ''
+    this.messageClass = ''
+
     if (this.form.invalid) {
-      this.hasError = true;
-      this.errorMessage = 'Please fill in all fields';
+      this.message = 'Please fill in all fields';
+      this.messageClass = 'text-red-500';
       return;
     }
 
@@ -40,19 +43,20 @@ export class FormComponent {
     const post: Post = this.form.value;
     this.postsService.createPost(post).subscribe({
       next: (res: Post) => {
+        this.message = 'Post created successfully';
+        console.log(this.message);
+        this.messageClass = 'text-green-500';
         console.log('Post created:', res);
         this.isSubmitting = false;
         this.buttonText = 'Submit';
-        this.hasError = false;
-        this.errorMessage = '';
         this.form.reset({ title: '', body: '', userId: 0 });
       },
       error: (err: HttpErrorResponse) => {
         console.error('Error:', err);
         this.isSubmitting = false;
         this.buttonText = 'Submit';
-        this.hasError = true;
-        this.errorMessage = 'Something went wrong';
+        this.message = 'Something went wrong';
+        this.messageClass = 'text-red-500';
       }
     });
   }
