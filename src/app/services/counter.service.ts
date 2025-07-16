@@ -8,6 +8,13 @@ export class CounterService {
   counter = signal(0)
   message = signal('')
 
+  constructor() {
+    const storedValue = localStorage.getItem('counter')
+    if (storedValue) {
+      this.counter.set(Number(storedValue))
+    }
+  }
+
   updateValue(type: string) {
     this.message.set('')
     if (type === 'increment') {
@@ -21,5 +28,6 @@ export class CounterService {
     } else if (type === 'reset') {
       this.counter.set(0)
     }
+    localStorage.setItem('counter', this.counter().toString())
   }
 }
