@@ -138,7 +138,7 @@ sendData() {
 <app-child (dataEvent)="handleData($event)"></app-child>
 ```
 
-## 🎯 Key Concepts Demonstrated
+## Key Concepts Demonstrated
 
 1. **Standalone Components**: Modern Angular 17 standalone components
 2. **Dependency Injection**: Services for shared functionality
